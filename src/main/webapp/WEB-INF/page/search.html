@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+	function searchProfile(){
+		var pemail=$("#email").val();
+	fetch("searchPAJAX?email="+pemail).
+	then(rep=>rep.json()).
+	then(function(data){
+		console.log(data);
+		$("#name").html(data.name);
+		 $("#username").html(data.username);
+		 $("#semail").html(data.username);
+		 $("#gender").html(data.gender);
+		 $("#qualification").html(data.qualification);
+		 $("#mobile").html(data.mobile);
+		 $("#photo").attr("src","data:image/jpeg;base64, "+data.photo);
+	}	);
+	}
+</script>
+<title>Search Profile</title>
+</head>
+<body>
+
+	<header style="background-color: #55b4ff;">
+
+	<h1>Search </h1>
+	</header>
+	<br>
+	
+		<div class="container">
+
+			<img src="Image/1.png" height="300px" id="studentImage"> <span
+				id="emessage"
+				style="color: blue; font-size: 16px; font-weight: bold;"> </span>
+			<h4>
+				<label>Enter Email</label><br> 
+				<input name="email" type="email"style="width: 500px" id="email">
+			</h4>
+
+
+			<button type="button" class="btn btn-primary"	style="margin-right: 36px" onclick="searchProfile();">Search Profile</button>
+			<button type="reset" class="btn btn-secondary"
+				style="margin-right: 36px" name="buttonName" value="reset">Reset</button>
+				
+			<br> <br> <br>
+			<hr />
+			<table style="width: 100%" class="table table-bordered">
+				<tr>
+					<th align="center" colspan=2 >
+						User Details
+					</th>
+				</tr>
+				<tr>
+					
+						<td> Name</td>
+						<td id="name">Doe</td>
+					
+				</tr>
+				<tr>
+					<td>Username</td>
+					<td id=username>abc@example.com</td>
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td id=semail>abc@example.com</td>
+				</tr>
+				<tr>
+					<td>Gender</td>
+					<td id=gender> M</td>
+				</tr>
+				<tr>
+					<td>Phone Number</td>
+					<td id=mobile>123456798</td>
+				</tr>
+				<tr>
+					<td>Qualification</td>
+					<td id=qual>Bachelors</td>
+				</tr>
+<tr>
+					<td>Image</td>
+					<td><img src="Image/2.png" height=100px id="photo"></td>
+				</tr>
+			</table>
+			<span id="message" style="color: red"> coming soon,...</span>
+		</div>
+
+</body>
+</html>
